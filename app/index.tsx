@@ -1,8 +1,8 @@
-import { Text, View } from "react-native";
+import { Text, SafeAreaView } from "react-native";
 
 export default function Index() {
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         justifyContent: "center",
@@ -10,6 +10,6 @@ export default function Index() {
       }}
     >
       <Text>Meine Handwerker-Software</Text>
-    </View>
+    </SafeAreaView>
   );
 }
