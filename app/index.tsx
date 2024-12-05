@@ -1,15 +1,4 @@
-import { Text, SafeAreaView } from "react-native";
+import { registerRootComponent } from "expo";
+import App from "./App";
 
-export default function Index() {
-  return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Meine Handwerker-Software</Text>
-    </SafeAreaView>
-  );
-}
+registerRootComponent(App);
