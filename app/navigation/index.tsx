@@ -8,18 +8,18 @@ import HomePage from "../pages/HomePage";
 const Stack = createStackNavigator();
 
 const AppNavigation = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Loading"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="Loading" component={LoadingPage} />
-        <Stack.Screen name="Login" component={LoginPage} />
-        <Stack.Screen name="Home" component={HomePage} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName="Loading"
+                screenOptions={{ headerShown: false }}
+            >
+                <Stack.Screen name="Loading" component={LoadingPage} />
+                <Stack.Screen name="Login" component={LoginPage} />
+                <Stack.Screen name="Home" component={HomePage} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 };
 
 export default AppNavigation;
