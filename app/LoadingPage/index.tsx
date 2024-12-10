@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import useAuthStore from "../stores/authStore";
+import styles from "./styles";
 
 // Define types for navigation
 type RootStackParamList = {
@@ -35,13 +36,5 @@ const LoadingPage = () => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-});
 
 export default LoadingPage;
