@@ -24,7 +24,6 @@ export const useLogin = () => {
             });
 
             if (!response.ok) {
-                // Non-2xx response, might include details in JSON
                 const errorData = await response.json().catch(() => null);
                 console.error("Login failed:", errorData);
                 alert("Invalid credentials");
@@ -48,8 +47,17 @@ export const useLogin = () => {
             setLoading(false);
         }
     };
-
-    return { username, setUsername, password, setPassword, handleLogin };
+    const routeToRegisterPage = async () => {
+        router.push("/RegisterPage");
+    };
+    return {
+        username,
+        setUsername,
+        password,
+        setPassword,
+        handleLogin,
+        routeToRegisterPage,
+    };
 };
 
 export default useLogin;

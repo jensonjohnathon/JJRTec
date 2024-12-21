@@ -5,7 +5,6 @@ import useAuthStore from "./stores/authStore";
 const IndexPage = () => {
     const { authenticated } = useAuthStore();
 
-    // Adjust paths to match your current structure
     return authenticated ? (
         <Redirect href="/HomePage" />
     ) : (
