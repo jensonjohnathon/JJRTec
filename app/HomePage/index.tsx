@@ -15,6 +15,11 @@ const HomePage = () => {
         router.push("/LoginPage");
     };
 
+    const handleCalendar = () => {
+        //setAuthenticated(false);
+        router.push("/CalendarPage");
+    };
+
     React.useEffect(() => {
         // Simulate fetching data
         setTimeout(() => {
@@ -26,6 +31,7 @@ const HomePage = () => {
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to the Home Page!</Text>
             <Button title="Logout" onPress={handleLogout} />
+            <Button title="Calendar" onPress={handleCalendar} />
             <LoadingOverlay visible={loading} />
         </View>
     );
