@@ -6,6 +6,10 @@ import useAuthStore from "../stores/authStore";
 import styles from "./styles";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import { Calendar } from "react-native-big-calendar";
+import dayjs from "dayjs";
+import "dayjs/locale/de";
+
+dayjs.locale("de");
 
 const CalendarPage = () => {
     const { setAuthenticated } = useAuthStore();
@@ -55,6 +59,9 @@ const CalendarPage = () => {
                     ]}
                     height={800} // Adjust the height here if needed
                     mode={viewMode} // Set the view mode based on the selected value
+                    locale="de"
+                    weekStartsOn={1}
+                    weekEndsOn={0}
                     scrollOffsetMinutes={300} // Start at 5:00 AM (300 minutes from midnight)
                     eventCellStyle={(event) => ({
                         backgroundColor: event.backgroundColor || "orange", // Default color is orange
