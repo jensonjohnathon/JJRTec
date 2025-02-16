@@ -21,35 +21,18 @@ const CalendarPage = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to the Calendar Page!</Text>
-            <View style={{ height: 800, width: "30%" }}>
-                {" "}
-                {/* Adjust the height and width here */}
+            <View style={{ height: "40%", width: "30%" }}>
                 <Calendar
                     events={[
                         {
                             title: "Meeting",
-                            start: new Date(2021, 10, 17, 10, 0),
-                            end: new Date(2021, 10, 17, 10, 45),
+                            start: new Date(2025, 1, 16, 1, 0),
+                            end: new Date(2025, 1, 16, 10, 45),
                         },
                     ]}
-                    mode="3days" // Set the view to week
+                    mode="week" // Set the view to week
                     scrollOffsetMinutes={300} // Start at 5:00 AM (300 minutes from midnight)
-                    height={600} // Adjust the height here if needed
-                    renderEvent={(event) => (
-                        <View
-                            style={{
-                                backgroundColor: "green",
-                                borderRadius: 0,
-                                opacity: 0.8,
-                                borderWidth: 0,
-                                padding: 5,
-                            }}
-                        >
-                            <Text style={{ color: "black" }}>
-                                {event.title}
-                            </Text>
-                        </View>
-                    )}
+                    height={800} // Adjust the height here if needed
                 />
             </View>
             <LoadingOverlay visible={loading} />
