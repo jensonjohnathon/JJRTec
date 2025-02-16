@@ -18,6 +18,7 @@ const CalendarPage = () => {
     const [viewMode, setViewMode] = useState<
         "day" | "3days" | "week" | "month"
     >("week"); // State variable to store the selected view mode
+    const [currentDate, setCurrentDate] = useState(new Date()); // State variable to store the current date
 
     React.useEffect(() => {
         // Simulate fetching data
@@ -25,6 +26,48 @@ const CalendarPage = () => {
             setLoading(false);
         }, 1);
     }, []);
+
+    const handlePrev = () => {
+        let newDate;
+        switch (viewMode) {
+            case "day":
+                newDate = dayjs(currentDate).subtract(1, "day").toDate();
+                break;
+            case "3days":
+                newDate = dayjs(currentDate).subtract(3, "day").toDate();
+                break;
+            case "week":
+                newDate = dayjs(currentDate).subtract(1, "week").toDate();
+                break;
+            case "month":
+                newDate = dayjs(currentDate).subtract(1, "month").toDate();
+                break;
+            default:
+                newDate = currentDate;
+        }
+        setCurrentDate(newDate);
+    };
+
+    const handleNext = () => {
+        let newDate;
+        switch (viewMode) {
+            case "day":
+                newDate = dayjs(currentDate).add(1, "day").toDate();
+                break;
+            case "3days":
+                newDate = dayjs(currentDate).add(3, "day").toDate();
+                break;
+            case "week":
+                newDate = dayjs(currentDate).add(1, "week").toDate();
+                break;
+            case "month":
+                newDate = dayjs(currentDate).add(1, "month").toDate();
+                break;
+            default:
+                newDate = currentDate;
+        }
+        setCurrentDate(newDate);
+    };
 
     return (
         <View style={styles.container}>
@@ -41,12 +84,18 @@ const CalendarPage = () => {
                     <Picker.Item label="Monat" value="month" />
                 </Picker>
             </View>
-            <View style={{ height: "60%", width: "30%" }}>
+            <View style={{ flexDirection: "row", marginBottom: 10 }}>
+                <Button title="Previous" onPress={handlePrev} />
+                <Button title="Next" onPress={handleNext} />
+            </View>
+            <View style={{ height: "60%", width: "50%" }}>
+                {" "}
+                {/* Adjust the height and width here */}
                 <Calendar
                     events={[
                         {
                             title: "Meeting",
-                            start: new Date(2025, 1, 16, 10, 0),
+                            start: new Date(2025, 1, 16, 10, 0), // February is month 1 (0-indexed)
                             end: new Date(2025, 1, 16, 10, 45),
                             backgroundColor: "green",
                         },
@@ -59,6 +108,7 @@ const CalendarPage = () => {
                     ]}
                     height={800} // Adjust the height here if needed
                     mode={viewMode} // Set the view mode based on the selected value
+                    date={currentDate} // Set the current date
                     locale="de"
                     weekStartsOn={1}
                     weekEndsOn={0}
