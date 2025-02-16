@@ -1,15 +1,15 @@
-import { Text, SafeAreaView } from "react-native";
+import React from "react";
+import { Redirect } from "expo-router";
+import useAuthStore from "./stores/authStore";
 
-export default function Index() {
-  return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Meine Handwerker-Software</Text>
-    </SafeAreaView>
-  );
-}
+const IndexPage = () => {
+    const { authenticated } = useAuthStore();
+
+    return authenticated ? (
+        <Redirect href="/HomePage" />
+    ) : (
+        <Redirect href="/LoginPage" />
+    );
+};
+
+export default IndexPage;
