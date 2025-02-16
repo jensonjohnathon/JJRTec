@@ -72,6 +72,7 @@ const CalendarPage = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to the Calendar Page!</Text>
+            <Button title="Today" onPress={() => setCurrentDate(new Date())} />
             <View style={{ marginBottom: 10 }}>
                 <Picker
                     selectedValue={viewMode}
