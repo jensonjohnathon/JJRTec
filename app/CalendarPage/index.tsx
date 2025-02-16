@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Button } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
 import useAuthStore from "../stores/authStore";
 import styles from "./styles";
@@ -24,11 +25,17 @@ const CalendarPage = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to the Calendar Page!</Text>
-            <View style={{ flexDirection: "row", marginBottom: 10 }}>
-                <Button title="Day" onPress={() => setViewMode("day")} />
-                <Button title="3 Days" onPress={() => setViewMode("3days")} />
-                <Button title="Week" onPress={() => setViewMode("week")} />
-                <Button title="Month" onPress={() => setViewMode("month")} />
+            <View style={{ marginBottom: 10 }}>
+                <Picker
+                    selectedValue={viewMode}
+                    style={{ height: 50, width: 150 }}
+                    onValueChange={(itemValue) => setViewMode(itemValue)}
+                >
+                    <Picker.Item label="Tagesansicht" value="day" />
+                    <Picker.Item label="3 Tage" value="3days" />
+                    <Picker.Item label="Woche" value="week" />
+                    <Picker.Item label="Monat" value="month" />
+                </Picker>
             </View>
             <View style={{ height: "60%", width: "30%" }}>
                 <Calendar
