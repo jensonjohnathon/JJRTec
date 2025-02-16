@@ -28,11 +28,23 @@ const CalendarPage = () => {
                             title: "Meeting",
                             start: new Date(2025, 1, 16, 1, 0),
                             end: new Date(2025, 1, 16, 10, 45),
+                            backgroundColor: "green",
+                        },
+                        {
+                            title: "Workshop",
+                            start: new Date(2025, 1, 16, 13, 0),
+                            end: new Date(2025, 1, 16, 15, 0),
+                            backgroundColor: "orange",
                         },
                     ]}
                     mode="week" // Set the view to week
                     scrollOffsetMinutes={300} // Start at 5:00 AM (300 minutes from midnight)
                     height={800} // Adjust the height here if needed
+                    eventCellStyle={(event) => ({
+                        backgroundColor: event.backgroundColor || "orange", // Default color is purple
+                        borderRadius: 5,
+                        padding: 5,
+                    })}
                 />
             </View>
             <LoadingOverlay visible={loading} />
